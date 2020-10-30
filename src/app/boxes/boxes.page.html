@@ -13,38 +13,35 @@
     My favorite boxes
   </ion-list-header>
 
-  <ion-card>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Hamburg_location_map.svg" />
-    <ion-card-header>
-      <ion-card-subtitle>Irgendwo in Hamburg</ion-card-subtitle>
-      <ion-card-title>Hamburg #1</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      Available
-    </ion-card-content>
-  </ion-card>
+  <ion-reorder-group disabled="false" (ionItemReorder)="doReorder($event)">
+    <ion-item>
+      <ion-badge slot="start" color="success">3 frei</ion-badge>
+      <ion-label>
+        <p>Irgendwo in Hamburg</p>
+        Hamburg #
+      </ion-label>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
 
-  <ion-card>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Hamburg_location_map.svg" />
-    <ion-card-header>
-      <ion-card-subtitle>Irgendwo in Hamburg</ion-card-subtitle>
-      <ion-card-title>Hamburg #2</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      Available
-    </ion-card-content>
-  </ion-card>
+    <ion-item>
+      <ion-badge slot="start" color="tertiary">1 frei</ion-badge>
+      <ion-label>
+        <p>Irgendwo in Hamburg</p>
+        Hamburg #2
+      </ion-label>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
 
-  <ion-card>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Hamburg_location_map.svg" />
-    <ion-card-header>
-      <ion-card-subtitle>Irgendwo in Hamburg</ion-card-subtitle>
-      <ion-card-title>Hamburg #3</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      Available
-    </ion-card-content>
-  </ion-card>
+    <ion-item>
+      <ion-badge slot="start" color="danger">0 frei</ion-badge>
+      <ion-label>
+        <p>Irgendwo in Hamburg</p>
+        Hamburg #3
+      </ion-label>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+
+  </ion-reorder-group>
 
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
