@@ -17,7 +17,6 @@ export class SendPage implements OnInit {
     @Input("id")
     private id: number
     private contact: Contact;
-    private imageurl: string;
     selected: Box = null;
     boxes: Box[] = []
 
@@ -30,22 +29,14 @@ export class SendPage implements OnInit {
             .then((c) => this.contact = c)
             .then((c) =>
                 Promise.all(c.boxes.map(id => this.boxService.getId(id)))
-                    .then(boxes => this.boxes = boxes)
+                    .then(boxes => {
+                        this.boxes = boxes
+                        this.selected = boxes[0]
+                    })
             )
-
     }
 
     close() {
         this.modalCtrl.dismiss();
-    }
-
-    segmentChanged($event: any) {
-
-    }
-
-    selectionChanged() {
-        console.log("Hallo")
-        console.log(this.selected)
-        this.imageurl = 'https://upload.wikimedia.org/wikipedia/commons/1/1d/Hamburg_location_map.svg';
     }
 }

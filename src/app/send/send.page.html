@@ -67,7 +67,7 @@
 
     <ion-item-divider color="white"></ion-item-divider>
     <ion-item>
-        <ion-img class="center" [src]="selected.image" [hidden]="selected != null"
+        <ion-img class="center" [src]="selected.image" [hidden]="selected.image == null"
                  style="max-height:250px;max-width:250px;"></ion-img>
     </ion-item>
 
