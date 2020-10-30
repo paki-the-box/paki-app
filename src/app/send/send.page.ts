@@ -39,4 +39,8 @@ export class SendPage implements OnInit {
     close() {
         this.modalCtrl.dismiss();
     }
+
+    segmentChanged(event: any) {
+
+    }
 }
