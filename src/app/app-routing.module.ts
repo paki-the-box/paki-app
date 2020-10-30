@@ -18,6 +18,26 @@ const routes: Routes = [
   {
     path: 'open',
     loadChildren: () => import('./open/open.module').then( m => m.OpenPageModule)
+  },
+  {
+    path: 'contacts',
+    loadChildren: () => import('./contacts/contacts.module').then( m => m.ContactsPageModule)
+  },
+  {
+    path: 'boxes',
+    loadChildren: () => import('./boxes/boxes.module').then( m => m.BoxesPageModule)
+  },
+  {
+    path: 'packets',
+    loadChildren: () => import('./packets/packets.module').then( m => m.PacketsPageModule)
+  },
+  {
+    path: 'add-contact',
+    loadChildren: () => import('./add-contact/add-contact.module').then( m => m.AddContactPageModule)
+  },
+  {
+    path: 'send',
+    loadChildren: () => import('./send/send.module').then( m => m.SendPageModule)
   }
 ];
 

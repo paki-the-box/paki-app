@@ -15,14 +15,19 @@ export class AppComponent implements OnInit {
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'Open Box',
-      url: '/open',
-      icon: 'mail'
+      title: 'Contacts',
+      url: '/contacts',
+      icon: 'person'
     },
     {
-      title: 'Login',
+      title: 'Boxes',
+      url: '/boxes',
+      icon: 'cube'
+    },
+    {
+      title: 'Account',
       url: '/login',
-      icon: 'lock-closed'
+      icon: 'person-circle'
     }
   ];
 
