@@ -3,7 +3,7 @@
     <name>Paki</name>
     <description>Showcase.</description>
     <author email="niklasmerz@linux.com">Niklas Merz</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://localhost:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -103,4 +103,5 @@
             <path url="/login-test/callback" />
         </host>
     </universal-links>
+    <allow-navigation href="http://localhost:8100" sessionid="015e9488" />
 </widget>
