@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Open</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" [class.hide]="scannerShown">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Open box</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container" *ngIf="!scannerShown">
+    <p><strong class="capitalize">Open box</strong></p>
+    <ion-button (click)="scan()">
+      <ion-icon name="qr-code" slot="start"></ion-icon>
+      Scan QR code
+    </ion-button>
+
+    <!-- Test UI-->
+    <br>
+    <br>
+    <p *ngIf="data">
+     Scanned data is:
+    </p>
+    {{data}}
+  </div>
+</ion-content>

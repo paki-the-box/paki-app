@@ -1,0 +1,7 @@
+{
+  "name": "parcel-box",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
