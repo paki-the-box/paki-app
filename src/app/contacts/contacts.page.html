@@ -1,70 +1,42 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Contacts</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Contacts</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-list-header>
-    <ion-label>My contacts</ion-label>
-  </ion-list-header>
+    <ion-list-header>
+        <ion-label>My contacts</ion-label>
+    </ion-list-header>
 
-  <ion-searchbar></ion-searchbar>
+    <ion-searchbar></ion-searchbar>
 
-  <ion-list>
-    <ion-item-sliding>
-      <ion-item>
-        <ion-label>Julian Feinauer</ion-label>
-        <ion-button slot="end" fill="clear" (click)="send()">
-          <ion-icon slot="icon-only" name="send"></ion-icon>
-        </ion-button>
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option (click)="delete()" color="danger">Delete</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-    <ion-item-sliding>
-      <ion-item>
-        <ion-label>Simon Mayer</ion-label>
-        <ion-button slot="end" fill="clear" (click)="send()">
-          <ion-icon slot="icon-only" name="send"></ion-icon>
-        </ion-button>
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option (click)="delete()" color="danger">Delete</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-    <ion-item-sliding>
-      <ion-item>
-        <ion-label>Björn Höper</ion-label>
-        <ion-button slot="end" fill="clear" (click)="send()">
-          <ion-icon slot="icon-only" name="send"></ion-icon>
-        </ion-button>
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option (click)="delete()" color="danger">Delete</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-    <ion-item-sliding>
-      <ion-item>
-        <ion-label>Tim Mitsch</ion-label>
-        <ion-button slot="end" fill="clear" (click)="send()">
-          <ion-icon slot="icon-only" name="send"></ion-icon>
-        </ion-button>
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option (click)="delete()" color="danger">Delete</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+    <ion-list>
+        <ng-template ngFor let-contact [ngForOf]="contacts">
+            <ion-item-sliding>
+                <ion-item>
+                    <ion-avatar slot="start" style="--border-radius: 0.5em; height: 50px !important; width: 50px !important;">
+                        <img [src]="contact.picture != null ? contact.picture : 'assets/shapes.svg'">
+                    </ion-avatar>
+                    <ion-label>{{contact.name}}</ion-label>
+                    <ion-button slot="end" fill="clear" (click)="send(contact.id)">
+                        <ion-icon slot="icon-only" name="send"></ion-icon>
+                    </ion-button>
+                </ion-item>
+                <ion-item-options side="end">
+                    <ion-item-option (click)="delete()" color="danger">Delete</ion-item-option>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ng-template>
+    </ion-list>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="pick()">
-      <ion-icon name="person-add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="pick()">
+            <ion-icon name="person-add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 </ion-content>
