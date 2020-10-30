@@ -99,8 +99,8 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^4.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <universal-links>
-        <host event="ul_authcallback" name="niklas.merz.dev" scheme="https">
-            <path url="/login-test/callback" />
+        <host event="ul_authcallback" name="paki.pragmaticminds.de" scheme="https">
+            <path url="/auth-callback" />
         </host>
     </universal-links>
     <allow-navigation href="http://localhost:8100" sessionid="015e9488" />
