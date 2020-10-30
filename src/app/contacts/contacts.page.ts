@@ -12,8 +12,8 @@ export class ContactsPage implements OnInit {
   ngOnInit() {
   }
 
-  delete(item: any) {
-    
+  delete() {
+
   }
 
 }

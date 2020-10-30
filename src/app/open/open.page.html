@@ -8,12 +8,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" [class.hide]="scannerShown">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Open box</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <div id="container" *ngIf="!scannerShown">
     <p><strong class="capitalize">Open box</strong></p>
     <ion-button (click)="scan()">
