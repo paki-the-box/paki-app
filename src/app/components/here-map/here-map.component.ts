@@ -13,8 +13,7 @@ export class HereMapComponent implements OnInit, AfterViewInit {
     @ViewChild('map')
     public mapElement: ElementRef;
 
-    private appId = environment.here_appId;
-    private appCode = environment.here_apiKey;
+    private apiKey = environment.here_apiKey;
 
     @Input()
     public lat: any;
@@ -28,13 +27,14 @@ export class HereMapComponent implements OnInit, AfterViewInit {
 
     public ngAfterViewInit() {
         const platform = new H.service.Platform({
-            app_id: this.appId,
-            apikey: this.appCode
+            apikey: this.apiKey
         });
         const defaultLayers = platform.createDefaultLayers();
+        console.debug(defaultLayers);
         const map = new H.Map(
             this.mapElement.nativeElement,
-            defaultLayers.normal.map,
+            // defaultLayers.vector.normal.map,
+            defaultLayers.raster.normal.transit,
             {
                 zoom: 10,
                 center: { lat: this.lat, lng: this.lng }

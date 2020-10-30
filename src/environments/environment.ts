@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  here_appId: 'wEHQxH1vHdCeykDMpJ1S',
-  here_apiKey: 'SYvFTWb5BdKKuPM40g2fSjNhVAr0y1DoVUK5pjtpi3g'
+  here_apiKey: 'DXu8V7tzqJHnuriOkNXJbrPlgVmH0-W8v1C_TdkRXqc'
 };
 
 /*
