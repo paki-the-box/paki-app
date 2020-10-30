@@ -1,48 +1,93 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button (click)="close()">
-        <ion-icon name="close" slot="icon-only"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title>Send</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="close()">
+                <ion-icon name="close" slot="icon-only"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Send</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>
-        Send to Julian
-      </ion-card-title>
-      <ion-card-subtitle>
-        julian@paki.de
-      </ion-card-subtitle>
-    </ion-card-header>
-  </ion-card>
-
-  <ion-list-header>
-    Julians favorite boxes
-  </ion-list-header>
-
-  <ion-list>
-    <ion-item button>
-      <ion-icon name="location" slot="start" size="large"></ion-icon>
-      <ion-label>
-        Station an der Alster
-      </ion-label>
+    <!--    <ion-card>-->
+    <!--        <ion-card-header>-->
+    <!--            <ion-card-title>-->
+    <!--                Send to Julian-->
+    <!--            </ion-card-title>-->
+    <!--            <ion-card-subtitle>-->
+    <!--                julian@paki.de-->
+    <!--            </ion-card-subtitle>-->
+    <!--        </ion-card-header>-->
+    <!--    </ion-card>-->
+    <ion-item>
+        <ion-avatar slot="start" style="--border-radius: 0.5em; height: 50px !important; width: 50px !important;">
+            <img src="assets/shapes.svg">
+        </ion-avatar>
+        <ion-label>
+            <h2>Bob Ludwig</h2>
+            <h3></h3>
+            <!--            <h3>I'm a big deal</h3>-->
+            <!--            <p>Listen, I've had a pretty messed up day...</p>-->
+        </ion-label>
     </ion-item>
 
-    <ion-item button>
-      <ion-icon name="location" slot="start" size="large"></ion-icon>
-      <ion-label>
-        Speicherstadt #3
-      </ion-label>
-    </ion-item>
+    <ion-item-divider></ion-item-divider>
+    <section>
+        <header>An bevorzugte Packstation senden</header>
+        <ion-list>
+            <ion-item button>
+                <ion-icon name="location" slot="start" size="large" color="primary"></ion-icon>
+                <ion-label>
+                    Station an der Alster
+                </ion-label>
+            </ion-item>
 
-  </ion-list>
+            <ion-item button>
+                <ion-icon name="location" slot="start" size="large" color="primary"></ion-icon>
+                <ion-label>
+                    Speicherstadt #3
+                </ion-label>
+            </ion-item>
+        </ion-list>
+    </section>
+    <section>
+        <ion-button expand="block" color="light">neue Packstation Vorschlagen</ion-button>
+    </section>
+    <ion-item-divider></ion-item-divider>
+    <section>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Hamburg_location_map.svg" width="100%%"/>
+    </section>
+    <ion-item-divider></ion-item-divider>
+    <section>
+        <header>Wie groß ist dein Paket?</header>
+        <ion-segment color="primary" (ionChange)="segmentChanged($event)">
+            <ion-segment-button value="S" style="--background: black">
+                <ion-label>S</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="M">
+                <ion-label>M</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="L">
+                <ion-label>L</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="XL">
+                <ion-label>XL</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+    </section>
+    <ion-item-divider></ion-item-divider>
+    <section>
+        <header>Wann möchtest du das Paket abgeben?</header>
+        <ion-datetime placeholder="Select Date"></ion-datetime>
+    </section>
+    <ion-item-divider></ion-item-divider>
+    <section>
+        <ion-button expand="block" color="primary">Vorschlagen</ion-button>
+        <ion-button expand="block" color="danger">Abbrechen</ion-button>
+    </section>
 
-  <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Hamburg_location_map.svg" />
 
 </ion-content>
+
