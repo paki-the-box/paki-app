@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 
-declare var navigator: any;
-
 @Component({
   selector: 'app-login',
   templateUrl: './open.page.html',
@@ -46,15 +44,6 @@ export class OpenPage {
       })
       .catch((e: any) => console.log('Error is', e));
 
-  }
-
-  pick() {
-    navigator.contacts.pickContact((contact) => {
-      console.log('The following contact has been selected:' + JSON.stringify(contact));
-      alert(JSON.stringify(contact));
-    }, (err) => {
-      console.log('Error: ' + err);
-    });
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-send',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SendPage implements OnInit {
 
-  constructor() { }
+  constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {
+  }
+
+  close() {
+    this.modalCtrl.dismiss();
   }
 
 }
