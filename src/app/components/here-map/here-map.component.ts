@@ -13,21 +13,30 @@ export class HereMapComponent implements OnInit, AfterViewInit {
     marker: any;
     mLat: any;
     mLng: any;
+    cLng: string;
 
     @ViewChild('map')
     public mapElement: ElementRef;
 
     private apiKey = environment.here_apiKey;
+    cLat: string;
 
     @Input()
-    public centerLat: any;
+    public set centerLat(marker: string) {
+        this.cLat = marker;
+        this.setCenter();
+    }
 
     @Input()
-    public centerLng: any;
+    public set centerLng(marker: string) {
+        this.cLng = marker;
+        this.setCenter();
+    }
 
     @Input()
     public set markerLat(marker: string) {
         this.mLat = marker;
+        this.setMarker();
     }
 
     @Input()
@@ -51,7 +60,7 @@ export class HereMapComponent implements OnInit, AfterViewInit {
             defaultLayers.raster.normal.transit,
             {
                 zoom: 11,
-                center: { lat: this.centerLat, lng: this.centerLng },
+                center: { lat: 53.510558, lng: 9.9035652 },
                 pixelRatio: window.devicePixelRatio || 1
             }
         );
@@ -61,12 +70,14 @@ export class HereMapComponent implements OnInit, AfterViewInit {
         setTimeout(() => {
             if (this.mLat && this.mLng) {
                 this.setMarker();
+                this.setCenter();
             }
             this.map.getViewPort().resize();
         }, 1000);
 
 
         const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(this.map));
+        behavior.disable(H.mapevents.Behavior.WHEELZOOM)
         const provider = this.map.getBaseLayer().getProvider();
 
         // Initialize router and geocoder
@@ -85,6 +96,12 @@ export class HereMapComponent implements OnInit, AfterViewInit {
             }
             this.marker = new H.map.Marker({ lat: this.mLat, lng: this.mLng });
             this.map.addObject(this.marker);
+        }
+    }
+
+    private setCenter() {
+        if (this.map && this.cLat && this.cLng) {
+            this.map.setCenter({ lat: this.cLat, lng: this.cLng });
         }
     }
 }

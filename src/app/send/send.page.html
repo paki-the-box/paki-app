@@ -60,7 +60,7 @@
                  style="max-height:250px;max-width:250px;"></ion-img>
     </ion-item> -->
 
-    <here-map *ngIf="selected" centerLat="53.510558" centerLng="9.9035652" [markerLat]="selected.lat" [markerLng]="selected.lng"></here-map>
+    <here-map *ngIf="selected" [centerLat]="selected.lat" [centerLng]="selected.lon" [markerLat]="selected.lat" [markerLng]="selected.lon"></here-map>
 
     <ion-item-divider color="white"></ion-item-divider>
     <section>
