@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SendRequest } from '../send-request';
 import { SendRequestService } from '../send-request.service';
 
 @Component({
@@ -8,7 +7,6 @@ import { SendRequestService } from '../send-request.service';
   styleUrls: ['./sent.page.scss'],
 })
 export class SentPage implements OnInit {
-  requests: SendRequest[];
 
   constructor(private requestService: SendRequestService) { }
 
@@ -17,8 +15,6 @@ export class SentPage implements OnInit {
   }
 
   private async load() {
-    this.requests = await this.requestService.getAll();
-    console.log(this.requests);
   }
 
 }
