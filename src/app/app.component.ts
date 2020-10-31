@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
 import { SendRequestService } from './send-request.service';
+import {Observer} from "rxjs";
 
 declare var universalLinks: any;
 @Component({
@@ -75,6 +76,12 @@ export class AppComponent implements OnInit {
       console.log(cnt)
       this.appPages[2].count = cnt
       console.log(this.appPages)
+    })
+
+    this.sendRequestService.observeRequestCount({
+      next: value => this.appPages[2].count = value,
+      error: err => {},
+      complete: () => {},
     })
   }
 }
