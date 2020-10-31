@@ -9,4 +9,40 @@
 
 <ion-content>
 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Sendung von</ion-card-subtitle>
+      <ion-card-title>Julian</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label>
+          Adresse
+        </ion-label>
+        <ion-label>
+          Kircheim
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          Datum
+        </ion-label>
+        <ion-label>
+          31.10.20
+        </ion-label>
+      </ion-item>
+
+      <here-map centerLat="48.6355632" centerLng="9.4052465" markerLat="48.6355632" markerLng="9.4052465"></here-map>
+      <ion-button color="success" expand="full">
+        Annehmen
+        <ion-icon name="checkmark" slot="start"></ion-icon>
+      </ion-button>
+      <ion-button color="danger" expand="full">
+        Ablehnen
+        <ion-icon name="close" slot="start"></ion-icon>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
