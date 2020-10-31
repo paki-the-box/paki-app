@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {DefaultService} from "./backend";
+import {DefaultService} from './backend';
 import {Contact} from './backend';
 
 @Injectable({
@@ -11,10 +11,10 @@ export class ContactService {
     }
 
     async getAll(): Promise<Contact[]> {
-        return this.defaultService.getAllContactsContactsGet().toPromise()
+        return this.defaultService.getAllContactsContactsGet().toPromise();
     }
 
     async getOne(id: string): Promise<Contact> {
-        return this.getAll().then(contacts => contacts.find(c => c.id == id))
+        return this.getAll().then(contacts => contacts.find(c => c.id === id));
     }
 }

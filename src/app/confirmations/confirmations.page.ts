@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {SendRequestService} from "../send-request.service";
 import {Contact, SendRequest} from "../backend";
 import {ContactService} from "../contact.service";
@@ -30,20 +30,23 @@ class NamedSendRequest implements SendRequest {
     templateUrl: './confirmations.page.html',
     styleUrls: ['./confirmations.page.scss'],
 })
-export class ConfirmationsPage implements OnInit {
+export class ConfirmationsPage {
 
     private waitingRequests: Array<NamedSendRequest> = []
 
-    constructor(private sendRequestService: SendRequestService, private contactService: ContactService) {
-        sendRequestService.getWaitingSendRequests()
-            .then(requests => this.waitingRequests = requests)
-        // .then(requests => requests.map((req: NamedSendRequest) => contactService.getOne(req.id).then(c => {
-        //     req.sender_name = c.name;
-        //     return req
-        // })));
+    constructor(private sendRequestService: SendRequestService, private contactService: ContactService) { }
+
+    ionViewDidEnter() {
+        this.load();
     }
 
-    ngOnInit() {
+    private async load() {
+        this.waitingRequests = await this.sendRequestService.getWaitingSendRequests();
+        this.waitingRequests.forEach(async (req: NamedSendRequest) => {
+            const contact = await this.contactService.getOne(req.sender);
+            console.debug(contact, req);
+            req.sender_name = contact.name;
+        });
     }
 
 }
