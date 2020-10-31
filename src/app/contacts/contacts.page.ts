@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ModalController, ToastController} from '@ionic/angular';
 import {SendPage} from '../send/send.page';
-import {Contact} from "../contact";
-import {ContactService} from "../contact.service";
+import {Contact} from '../backend';
+import {ContactService} from '../contact.service';
 
 declare var navigator: any;
 
@@ -19,7 +19,7 @@ export class ContactsPage implements OnInit {
     }
 
     ngOnInit() {
-        this.contactService.getAll().then(data => this.contacts = data)
+        this.contactService.getAll().then(data => this.contacts = data);
     }
 
     delete() {
@@ -30,7 +30,7 @@ export class ContactsPage implements OnInit {
         const modal = await this.modalCtrl.create({
             component: SendPage,
             componentProps: {
-                id: id
+                id
             }
         });
         modal.onDidDismiss().then(event => {
