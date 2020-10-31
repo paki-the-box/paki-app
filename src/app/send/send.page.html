@@ -65,7 +65,7 @@
     <ion-item-divider color="white"></ion-item-divider>
     <section>
         <header>Wie groß ist dein Paket?</header>
-        <ion-segment color="primary" [(ngModel)]="size" value="S">
+        <ion-segment color="primary" [(ngModel)]="size">
             <ion-segment-button value="S" style="--background: black">
                 <ion-label>S</ion-label>
             </ion-segment-button>
@@ -81,10 +81,10 @@
         </ion-segment>
     </section>
     <ion-item-divider></ion-item-divider>
-    <section>
-        <header>Wann möchtest du das Paket abgeben?</header>
-        <ion-datetime placeholder="Select Date" class="center" [(ngModel)]="deliveryDate"></ion-datetime>
-    </section>
+    <ion-item>
+        <ion-label>Wann möchtest du das Paket abgeben?</ion-label>
+        <ion-datetime placeholder="Datum wählen" class="center" [(ngModel)]="deliveryDate"></ion-datetime>
+    </ion-item>
     <ion-item-divider></ion-item-divider>
     <section>
         <ion-button expand="block" color="primary" (click)="submit()" [disabled]="size == null || deliveryDate == null">Vorschlagen</ion-button>

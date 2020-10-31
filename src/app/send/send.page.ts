@@ -21,7 +21,7 @@ export class SendPage implements OnInit {
     contact: Contact = null;
     selected: Box = null;
     boxes: Box[] = []
-    size: string;
+    size = 'S';
     deliveryDate: string;
 
     constructor(private modalCtrl: ModalController, router: Router, private contactService: ContactService,
