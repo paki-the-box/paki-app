@@ -1,6 +1,6 @@
 export class Box {
 
-    constructor(private _id: number, private _address: string, private _image?: string) {
+    constructor(private _id: number, private _address: string, private _image?: string, private _lat?: string, private _lng?: string) {
     }
 
     get id(): number {
@@ -13,5 +13,13 @@ export class Box {
 
     get image(): string {
         return this._image;
+    }
+
+    get lat(): string {
+        return this._lat;
+    }
+
+    get lng(): string {
+        return this._lng;
     }
 }

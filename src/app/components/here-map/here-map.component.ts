@@ -9,6 +9,10 @@ declare var H: any;
     templateUrl: 'here-map.component.html'
 })
 export class HereMapComponent implements OnInit, AfterViewInit {
+    map: any;
+    marker: any;
+    mLat: any;
+    mLng: any;
 
     @ViewChild('map')
     public mapElement: ElementRef;
@@ -16,10 +20,21 @@ export class HereMapComponent implements OnInit, AfterViewInit {
     private apiKey = environment.here_apiKey;
 
     @Input()
-    public lat: any;
+    public centerLat: any;
 
     @Input()
-    public lng: any;
+    public centerLng: any;
+
+    @Input()
+    public set markerLat(marker: string) {
+        this.mLat = marker;
+    }
+
+    @Input()
+    public set markerLng(marker: string) {
+        this.mLng = marker;
+        this.setMarker();
+    }
 
     public constructor() { }
 
@@ -30,36 +45,46 @@ export class HereMapComponent implements OnInit, AfterViewInit {
             apikey: this.apiKey
         });
         const defaultLayers = platform.createDefaultLayers();
-        console.debug(defaultLayers);
-        const map = new H.Map(
+        this.map = new H.Map(
             this.mapElement.nativeElement,
             // defaultLayers.vector.normal.map,
             defaultLayers.raster.normal.transit,
             {
                 zoom: 11,
-                center: { lat: this.lat, lng: this.lng },
+                center: { lat: this.centerLat, lng: this.centerLng },
                 pixelRatio: window.devicePixelRatio || 1
             }
         );
-        
-        window.addEventListener('resize', () => map.getViewPort().resize());
+        window.addEventListener('resize', () => this.map.getViewPort().resize());
 
-        //HACK
-        setTimeout(() => map.getViewPort().resize(), 1000);
+        // HACK
+        setTimeout(() => {
+            if (this.mLat && this.mLng) {
+                this.setMarker();
+            }
+            this.map.getViewPort().resize();
+        }, 1000);
 
 
-        const dummyMarker = new H.map.Marker({lat: 53.5477251, lng: 9.9438548});
-        map.addObject(dummyMarker);
-
-        const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
-        const provider = map.getBaseLayer().getProvider();
+        const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(this.map));
+        const provider = this.map.getBaseLayer().getProvider();
 
         // Initialize router and geocoder
         const router = platform.getRoutingService();
         const geocoder = platform.getGeocodingService();
 
         // Create the default UI components
-        const ui = H.ui.UI.createDefault(map, defaultLayers);
+        const ui = H.ui.UI.createDefault(this.map, defaultLayers);
     }
 
+
+    private setMarker() {
+        if (this.map && this.mLat && this.mLng) {
+            if (this.marker) {
+                this.map.removeObject(this.marker);
+            }
+            this.marker = new H.map.Marker({ lat: this.mLat, lng: this.mLng });
+            this.map.addObject(this.marker);
+        }
+    }
 }
