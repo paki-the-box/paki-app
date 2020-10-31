@@ -3,7 +3,7 @@ import {Contact} from "./contact";
 
 export class SendRequest {
 
-    constructor(private contact: Contact, private selected: Box, private size: string, private deliveryDate: string) {
+    constructor(public contact: Contact, public selected: Box, public size: string, public deliveryDate: string) {
     }
 
 }

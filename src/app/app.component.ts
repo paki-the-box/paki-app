@@ -29,8 +29,8 @@ export class AppComponent implements OnInit {
       count: 0
     },
     {
-      title: 'Send Requests',
-      url: '/login',
+      title: 'Sent Requests',
+      url: '/sent',
       icon: 'send',
       count: 0
     },
