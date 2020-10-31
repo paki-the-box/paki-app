@@ -7,6 +7,7 @@ import { SendRequestService } from '../send-request.service';
   styleUrls: ['./sent.page.scss'],
 })
 export class SentPage implements OnInit {
+  requests = [];
 
   constructor(private requestService: SendRequestService) { }
 
