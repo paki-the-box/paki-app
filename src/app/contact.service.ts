@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Contact} from "./contact";
-import {throwError} from "rxjs";
+import {Contact} from './contact';
 
 @Injectable({
     providedIn: 'root'
@@ -25,6 +24,6 @@ export class ContactService {
     }
 
     async getOne(id: number): Promise<Contact> {
-        return this.contacts.find(c => c.id == id)
+        return this.contacts.find(c => c.id === id);
     }
 }
