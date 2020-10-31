@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { loadavg } from 'os';
 import { SendRequest } from '../send-request';
 import { SendRequestService } from '../send-request.service';
 
