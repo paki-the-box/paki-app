@@ -34,7 +34,6 @@ export class ContactsPage implements OnInit {
             }
         });
         modal.onDidDismiss().then(event => {
-            console.log(event.data)
             this.toastController.create(event.data).then(toast => toast.present())
         })
         return await modal.present();

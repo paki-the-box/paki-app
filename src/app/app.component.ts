@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
+import { SendRequestService } from './send-request.service';
 
 declare var universalLinks: any;
 @Component({
@@ -17,17 +18,26 @@ export class AppComponent implements OnInit {
     {
       title: 'Contacts',
       url: '/contacts',
-      icon: 'person'
+      icon: 'person',
+      count: 0
     },
     {
       title: 'Boxes',
       url: '/boxes',
-      icon: 'cube'
+      icon: 'cube',
+      count: 0
+    },
+    {
+      title: 'Send Requests',
+      url: '/login',
+      icon: 'send',
+      count: 0
     },
     {
       title: 'Account',
       url: '/login',
-      icon: 'person-circle'
+      icon: 'person-circle',
+      count: 0
     }
   ];
 
@@ -35,6 +45,7 @@ export class AppComponent implements OnInit {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
+    private sendRequestService: SendRequestService,
     private router: Router
   ) {
     this.initializeApp();
@@ -59,5 +70,11 @@ export class AppComponent implements OnInit {
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.url.toLowerCase() === path.toLowerCase());
     }
+    // Initialize counts
+    this.sendRequestService.getOpenRequests().then(cnt => {
+      console.log(cnt)
+      this.appPages[3].count = cnt
+      console.log(this.appPages)
+    })
   }
 }

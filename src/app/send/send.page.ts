@@ -5,6 +5,8 @@ import {ContactService} from "../contact.service";
 import {Contact} from '../contact';
 import {BoxService} from "../box.service";
 import {Box} from "../box";
+import {SendRequest} from "../send-request";
+import { SendRequestService } from '../send-request.service';
 
 @Component({
     selector: 'app-send',
@@ -23,7 +25,7 @@ export class SendPage implements OnInit {
     deliveryDate: string;
 
     constructor(private modalCtrl: ModalController, router: Router, private contactService: ContactService,
-                private boxService: BoxService, private toastController: ToastController) {
+                private boxService: BoxService, private sendRequestService: SendRequestService) {
         this._router = router;
     }
 
@@ -44,6 +46,9 @@ export class SendPage implements OnInit {
     }
 
     submit() {
-        this.modalCtrl.dismiss({message: "Successfully submitted!", duration: 2000});
+        // Send to backend...
+        let request = new SendRequest(this.contact, this.selected, this.size, this.deliveryDate);
+        this.sendRequestService.save(request)
+        this.modalCtrl.dismiss({message: "Successfully submitted!", duration: 2000, color: "success"});
     }
 }
