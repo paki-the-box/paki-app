@@ -82,5 +82,11 @@ export class AppComponent implements OnInit {
       error: err => {},
       complete: () => {},
     });
+
+    this.sendRequestService.observeWaitingRequests({
+      next: value => this.appPages[3].count = value,
+      error: err => {},
+      complete: () => {},
+    });
   }
 }
