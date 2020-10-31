@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemReorderEventDetail } from '@ionic/core';
-import { Box } from '../box';
+import {Box} from '../backend';
 import { BoxService } from '../box.service';
 
 @Component({
