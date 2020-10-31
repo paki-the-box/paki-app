@@ -20,7 +20,7 @@
                 <ion-label>
                     Adresse
                 </ion-label>
-                <ion-label>
+                <ion-label *ngIf="req.selectedBox">
                     {{req.selectedBox.address}}
                 </ion-label>
             </ion-item>
@@ -33,7 +33,7 @@
                 </ion-label>
             </ion-item>
 
-            <here-map [centerLat]="req.selectedBox.lat" [centerLng]="req.selectedBox.lon" [markerLat]="req.selectedBox.lat"
+            <here-map *ngIf="req.selectedBox" [centerLat]="req.selectedBox.lat" [centerLng]="req.selectedBox.lon" [markerLat]="req.selectedBox.lat"
                       [markerLng]="req.selectedBox.lon"></here-map>
             <ion-button color="success" expand="full">
                 Annehmen

@@ -34,7 +34,7 @@ class NamedSendRequest implements SendRequest {
 })
 export class ConfirmationsPage {
 
-    private waitingRequests: Array<NamedSendRequest> = [];
+    waitingRequests: Array<NamedSendRequest> = [];
 
     constructor(private sendRequestService: SendRequestService, private contactService: ContactService, private boxService: BoxService) { }
 
