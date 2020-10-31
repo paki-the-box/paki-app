@@ -13,30 +13,12 @@
     My favorite boxes
   </ion-list-header>
 
-  <ion-reorder-group disabled="false" (ionItemReorder)="doReorder($event)">
-    <ion-item>
+  <ion-reorder-group disabled="false" (ionItemReorder)="doReorder($event)" *ngIf="boxes && boxes.length > 0">
+    <ion-item *ngFor="let box of boxes">
       <ion-badge slot="start" color="success">3 frei</ion-badge>
       <ion-label>
-        <p>Irgendwo in Hamburg</p>
-        Hamburg #
-      </ion-label>
-      <ion-reorder slot="end"></ion-reorder>
-    </ion-item>
-
-    <ion-item>
-      <ion-badge slot="start" color="tertiary">1 frei</ion-badge>
-      <ion-label>
-        <p>Irgendwo in Hamburg</p>
-        Hamburg #2
-      </ion-label>
-      <ion-reorder slot="end"></ion-reorder>
-    </ion-item>
-
-    <ion-item>
-      <ion-badge slot="start" color="danger">0 frei</ion-badge>
-      <ion-label>
-        <p>Irgendwo in Hamburg</p>
-        Hamburg #3
+        <p>{{box.id}}</p>
+        {{box.address}}
       </ion-label>
       <ion-reorder slot="end"></ion-reorder>
     </ion-item>
@@ -49,7 +31,5 @@
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
-  <here-map centerLat="53.510558" centerLng="9.9035652"></here-map>
 </ion-content>
 

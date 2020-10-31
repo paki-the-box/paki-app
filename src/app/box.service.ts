@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Box} from "./box";
+import {Box} from './box';
 
 @Injectable({
   providedIn: 'root'
@@ -7,9 +7,9 @@ import {Box} from "./box";
 export class BoxService {
 
   private boxes = [
-      new Box(1, "Um die Ecke", '53.5477251', '9.9438548'),
-      new Box(2, "Um die andere Ecke", '53.540215', '9.9980949'),
-  ]
+      new Box(1, 'Um die Ecke', '53.5477251', '9.9438548'),
+      new Box(2, 'Um die andere Ecke', '53.540215', '9.9980949'),
+  ];
 
   constructor() { }
 

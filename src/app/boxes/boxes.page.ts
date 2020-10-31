@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemReorderEventDetail } from '@ionic/core';
+import { Box } from '../box';
+import { BoxService } from '../box.service';
 
 @Component({
   selector: 'app-boxes',
@@ -7,10 +9,12 @@ import { ItemReorderEventDetail } from '@ionic/core';
   styleUrls: ['./boxes.page.scss'],
 })
 export class BoxesPage implements OnInit {
+  boxes: Box[];
 
-  constructor() { }
+  constructor(private boxService: BoxService) { }
 
   ngOnInit() {
+    this.boxService.getAll().then((boxes) => this.boxes = boxes);
   }
 
   doReorder(ev: CustomEvent<ItemReorderEventDetail>) {
