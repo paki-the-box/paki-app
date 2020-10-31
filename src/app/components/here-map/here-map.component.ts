@@ -33,15 +33,23 @@ export class HereMapComponent implements OnInit, AfterViewInit {
         console.debug(defaultLayers);
         const map = new H.Map(
             this.mapElement.nativeElement,
-            defaultLayers.vector.normal.map,
-            // defaultLayers.raster.normal.transit,
+            // defaultLayers.vector.normal.map,
+            defaultLayers.raster.normal.transit,
             {
-                zoom: 10,
+                zoom: 11,
                 center: { lat: this.lat, lng: this.lng },
                 pixelRatio: window.devicePixelRatio || 1
             }
         );
+        
         window.addEventListener('resize', () => map.getViewPort().resize());
+
+        //HACK
+        setTimeout(() => map.getViewPort().resize(), 1000);
+
+
+        const dummyMarker = new H.map.Marker({lat: 53.5477251, lng: 9.9438548});
+        map.addObject(dummyMarker);
 
         const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
         const provider = map.getBaseLayer().getProvider();
