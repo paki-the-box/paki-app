@@ -35,6 +35,12 @@ export class AppComponent implements OnInit {
       count: 0
     },
     {
+      title: 'Confirmations',
+      url: '/confirmations',
+      icon: 'mail-unread',
+      count: 0
+    },
+    {
       title: 'Account',
       url: '/login',
       icon: 'person-circle',

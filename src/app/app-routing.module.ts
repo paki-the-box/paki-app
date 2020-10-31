@@ -38,6 +38,10 @@ const routes: Routes = [
   {
     path: 'send',
     loadChildren: () => import('./send/send.module').then( m => m.SendPageModule)
+  },
+  {
+    path: 'confirmations',
+    loadChildren: () => import('./confirmations/confirmations.module').then( m => m.ConfirmationsPageModule)
   }
 ];
 
