@@ -34,7 +34,7 @@ import { Configuration }                                     from '../configurat
 })
 export class DefaultService {
 
-    protected basePath = 'https://paki.pragmaticminds.de';
+    protected basePath = 'https://paki-api.pragmaticminds.de';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
     public encoder: HttpParameterCodec;
