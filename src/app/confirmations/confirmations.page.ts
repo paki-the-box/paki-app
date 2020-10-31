@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {SendRequestService} from "../send-request.service";
 import {Contact, SendRequest} from "../backend";
 import {ContactService} from "../contact.service";
+import { BoxService } from '../box.service';
 
 class NamedSendRequest implements SendRequest {
 
@@ -11,7 +12,8 @@ class NamedSendRequest implements SendRequest {
     receiver: string;
     sender: string;
     size: string;
-    sender_name?: string
+    sender_name?: string;
+    box_location?: string;
 
 
     constructor(box: string, dropoff_date: string, id: string, receiver: string, sender: string, size: string, sender_name: string) {
@@ -32,9 +34,9 @@ class NamedSendRequest implements SendRequest {
 })
 export class ConfirmationsPage {
 
-    private waitingRequests: Array<NamedSendRequest> = []
+    private waitingRequests: Array<NamedSendRequest> = [];
 
-    constructor(private sendRequestService: SendRequestService, private contactService: ContactService) { }
+    constructor(private sendRequestService: SendRequestService, private contactService: ContactService, private boxService: BoxService) { }
 
     ionViewDidEnter() {
         this.load();
@@ -44,7 +46,8 @@ export class ConfirmationsPage {
         this.waitingRequests = await this.sendRequestService.getWaitingSendRequests();
         this.waitingRequests.forEach(async (req: NamedSendRequest) => {
             const contact = await this.contactService.getOne(req.sender);
-            console.debug(contact, req);
+            const box = await this.boxService.getId(req.box);
+            req.box_location = box.address;
             req.sender_name = contact.name;
         });
     }
