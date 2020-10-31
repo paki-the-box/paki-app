@@ -18,7 +18,6 @@ export class BoxService {
   }
 
   async getId(id: number) {
-    console.log("Find Box" + id)
     return this.boxes.find(b => b.id == id);
   }
 }

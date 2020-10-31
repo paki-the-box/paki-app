@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ModalController} from '@ionic/angular';
+import {ModalController, ToastController} from '@ionic/angular';
 import {SendPage} from '../send/send.page';
 import {Contact} from "../contact";
 import {ContactService} from "../contact.service";
@@ -15,7 +15,7 @@ export class ContactsPage implements OnInit {
 
     contacts: Contact[] = [];
 
-    constructor(private modalCtrl: ModalController, private contactService: ContactService) {
+    constructor(private modalCtrl: ModalController, private contactService: ContactService, private toastController: ToastController) {
     }
 
     ngOnInit() {
@@ -33,6 +33,10 @@ export class ContactsPage implements OnInit {
                 id: id
             }
         });
+        modal.onDidDismiss().then(event => {
+            console.log(event.data)
+            this.toastController.create(event.data).then(toast => toast.present())
+        })
         return await modal.present();
     }
 

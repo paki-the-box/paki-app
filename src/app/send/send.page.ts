@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ModalController} from '@ionic/angular';
+import {ModalController, ToastController} from '@ionic/angular';
 import {Router} from "@angular/router";
 import {ContactService} from "../contact.service";
 import {Contact} from '../contact';
@@ -16,11 +16,14 @@ export class SendPage implements OnInit {
 
     @Input("id")
     private id: number
-    private contact: Contact;
+    contact: Contact = null;
     selected: Box = null;
     boxes: Box[] = []
+    size: string;
+    deliveryDate: string;
 
-    constructor(private modalCtrl: ModalController, router: Router, private contactService: ContactService, private boxService: BoxService) {
+    constructor(private modalCtrl: ModalController, router: Router, private contactService: ContactService,
+                private boxService: BoxService, private toastController: ToastController) {
         this._router = router;
     }
 
@@ -37,10 +40,10 @@ export class SendPage implements OnInit {
     }
 
     close() {
-        this.modalCtrl.dismiss();
+        this.modalCtrl.dismiss({message: "Unfinished", duration: 2000, color: "danger"});
     }
 
-    segmentChanged(event: any) {
-
+    submit() {
+        this.modalCtrl.dismiss({message: "Successfully submitted!", duration: 2000});
     }
 }
