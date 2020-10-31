@@ -7,7 +7,9 @@ import {SendRequestService} from '../send-request.service';
 import {Box} from "../backend";
 import {Contact} from "../backend";
 import {SendRequest} from "../backend";
-import * as uuid from 'uuid';
+import { UUID } from 'angular2-uuid';
+import * as moment from 'moment';
+
 
 @Component({
     selector: 'app-send',
@@ -49,12 +51,11 @@ export class SendPage implements OnInit {
     submit() {
         // Send to backend...
         let request: SendRequest = {
-            id: uuid.stringify(uuid.v4()),
+            id: UUID.UUID().toString(),
             sender: 'bdd2ddf2-3b93-4c0c-b3eb-da16a389c64b',
             receiver: this.contact.id,
-            box: this.selected.id,
-            size: this.size,
-            dropoff_date: this.deliveryDate
+            box: this.selected.id,            size: this.size,
+            dropoff_date: moment(this.deliveryDate).format('YYYY-MM-DD')
         } // new SendRequest(this.contact, this.selected, this.size, this.deliveryDate);
         this.sendRequestService.save(request)
         this.modalCtrl.dismiss({message: "Successfully submitted!", duration: 2000, color: "success"});

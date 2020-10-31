@@ -8,7 +8,7 @@ const KEY = "send-requests";
     providedIn: 'root'
 })
 export class SendRequestService {
-    private countObservable: Subject<number>;
+    private countObservable: Subject<number> = new Subject<number>();
 
     constructor(private defaultService: DefaultService) {
     }
@@ -55,7 +55,8 @@ export class SendRequestService {
     // }
 
     async save(request: SendRequest) {
-        console.log("I'm about to send " + request)
+        console.log("I'm about to send " + JSON.stringify(request))
+        console.log(request)
         let promise = this.defaultService.newRequestRequestsNewPost(request).toPromise();
         promise.then(_ => this.defaultService.openSentRequestsForUserRequestsSentCountUserIdPost('bdd2ddf2-3b93-4c0c-b3eb-da16a389c64b').toPromise().then(count => this.countObservable.next(count)))
         return promise
@@ -63,6 +64,7 @@ export class SendRequestService {
 
     observeRequestCount(observer: Observer<number>) {
         this.countObservable.subscribe(observer)
+        this.defaultService.openSentRequestsForUserRequestsSentCountUserIdPost('bdd2ddf2-3b93-4c0c-b3eb-da16a389c64b').toPromise().then(count => this.countObservable.next(count))
     }
 
 }
