@@ -21,7 +21,7 @@
                     Adresse
                 </ion-label>
                 <ion-label>
-                    {{req.box_location}}
+                    {{req.selectedBox.address}}
                 </ion-label>
             </ion-item>
             <ion-item>
@@ -33,8 +33,8 @@
                 </ion-label>
             </ion-item>
 
-            <here-map centerLat="48.6355632" centerLng="9.4052465" markerLat="48.6355632"
-                      markerLng="9.4052465"></here-map>
+            <here-map [centerLat]="req.selectedBox.lat" [centerLng]="req.selectedBox.lon" [markerLat]="req.selectedBox.lat"
+                      [markerLng]="req.selectedBox.lon"></here-map>
             <ion-button color="success" expand="full">
                 Annehmen
                 <ion-icon name="checkmark" slot="start"></ion-icon>

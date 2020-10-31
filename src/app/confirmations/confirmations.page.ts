@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {SendRequestService} from "../send-request.service";
-import {Contact, SendRequest} from "../backend";
+import {Box, Contact, SendRequest} from "../backend";
 import {ContactService} from "../contact.service";
 import { BoxService } from '../box.service';
 
@@ -13,7 +13,7 @@ class NamedSendRequest implements SendRequest {
     sender: string;
     size: string;
     sender_name?: string;
-    box_location?: string;
+    selectedBox?: Box;
 
 
     constructor(box: string, dropoff_date: string, id: string, receiver: string, sender: string, size: string, sender_name: string) {
@@ -47,7 +47,7 @@ export class ConfirmationsPage {
         this.waitingRequests.forEach(async (req: NamedSendRequest) => {
             const contact = await this.contactService.getOne(req.sender);
             const box = await this.boxService.getId(req.box);
-            req.box_location = box.address;
+            req.selectedBox = box;
             req.sender_name = contact.name;
         });
     }
