@@ -73,7 +73,7 @@ export class AppComponent implements OnInit {
     // Initialize counts
     this.sendRequestService.getOpenRequests().then(cnt => {
       console.log(cnt)
-      this.appPages[3].count = cnt
+      this.appPages[2].count = cnt
       console.log(this.appPages)
     })
   }
