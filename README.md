@@ -1,4 +1,8 @@
-# Paki The App
+# Paki - The App
+
+![](site/banner.png)
+
+This is PACKI - The Open & Universap App for packstations!
 
 # How to run
 
