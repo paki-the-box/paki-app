@@ -1,29 +1,29 @@
 import {Component} from '@angular/core';
 import {SendRequestService} from '../send-request.service';
-import {Box, Contact, SendRequest} from '../backend';
+import {Box, SendRequest} from '../backend';
 import {ContactService} from '../contact.service';
 import { BoxService } from '../box.service';
 
 class NamedSendRequest implements SendRequest {
 
     box: string;
-    dropoff_date: string;
+    dropoffDate: string;
     id: string;
     receiver: string;
     sender: string;
     size: string;
-    sender_name?: string;
+    senderName?: string;
     selectedBox?: Box;
 
 
-    constructor(box: string, dropoff_date: string, id: string, receiver: string, sender: string, size: string, sender_name: string) {
+    constructor(box: string, dropoffDate: string, id: string, receiver: string, sender: string, size: string, senderName: string) {
         this.box = box;
-        this.dropoff_date = dropoff_date;
+        this.dropoffDate = dropoffDate;
         this.id = id;
         this.receiver = receiver;
         this.sender = sender;
         this.size = size;
-        this.sender_name = sender_name;
+        this.senderName = senderName;
     }
 }
 
@@ -48,7 +48,7 @@ export class ConfirmationsPage {
             const contact = await this.contactService.getOne(req.sender);
             const box = await this.boxService.getId(req.box);
             req.selectedBox = box;
-            req.sender_name = contact.name;
+            req.senderName = contact.name;
         });
     }
 

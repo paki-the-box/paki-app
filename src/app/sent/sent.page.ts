@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SendRequestService } from '../send-request.service';
 
 @Component({
   selector: 'app-sent',
@@ -9,7 +8,7 @@ import { SendRequestService } from '../send-request.service';
 export class SentPage implements OnInit {
   requests = [];
 
-  constructor(private requestService: SendRequestService) { }
+  constructor() { }
 
   ngOnInit() {
     this.load();

@@ -14,7 +14,7 @@
 /**
  * I want to drop you something off Sender -> Backend -> Receiver
  */
-export interface SendRequest { 
+export interface SendRequest {
     id: string;
     sender: string;
     receiver: string;
@@ -23,6 +23,6 @@ export interface SendRequest {
      * An enumeration.
      */
     size: string;
-    dropoff_date: string;
+    dropoffDate: string;
 }
 

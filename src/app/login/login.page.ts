@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {AuthConfig, OAuthService} from 'angular-oauth2-oidc';
-import {addWarning} from '@angular-devkit/build-angular/src/utils/webpack-diagnostics';
+import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
 
 export const authCodeFlowConfig: AuthConfig = {
   // Url of the Identity Provider
@@ -50,10 +49,10 @@ export class LoginPage implements OnInit {
         console.log(fragment);
         const strings = fragment.split('=');
         console.log(strings);
-        if (strings[0] == 'access_token') {
+        if (strings[0] === 'access_token') {
           console.log('Access Token is set...');
-          const access_token = strings[1];
-          this.token = access_token;
+          const accessToken = strings[1];
+          this.token = accessToken;
           this.isLogin = true;
           return;
         }
@@ -62,8 +61,6 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    // window.open("https://auth.demo.pragmaticindustries.de/auth/realms/packi/protocol/openid-connect/auth?client_id=packi_app&redirect_uri=" + encodeURIComponent("https://paki.pragmaticminds.de/auth-callback") + "&response_type=token&scope=email", "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
-    // window.open("https://auth.demo.pragmaticindustries.de/auth/realms/packi/protocol/openid-connect/auth?client_id=packi_app&redirect_uri=" + encodeURIComponent("http://localhost:4200/login") + "&response_type=token&scope=email", "_self", "location=no,clearsessioncache=yes,clearcache=yes");
     console.log('Configure');
     this.oauthService.configure(authCodeFlowConfig);
     console.log('Try Login');
