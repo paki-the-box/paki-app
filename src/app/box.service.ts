@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {DefaultService} from "./backend";
+import {DefaultService} from './backend';
 
 @Injectable({
     providedIn: 'root'
@@ -15,10 +15,10 @@ export class BoxService {
     }
 
     async getAll() {
-        return this.defaultService.getAllBoxesBoxesAllGet().toPromise()
+        return this.defaultService.getAllBoxesBoxesAllGet().toPromise();
     }
 
     async getId(id: string) {
-        return this.getAll().then(boxes => boxes.find(b => b.id === id))
+        return this.getAll().then(boxes => boxes.find(b => b.id === id));
     }
 }

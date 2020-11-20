@@ -77,7 +77,7 @@ export class HereMapComponent implements OnInit, AfterViewInit {
 
 
         const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(this.map));
-        behavior.disable(H.mapevents.Behavior.WHEELZOOM)
+        behavior.disable(H.mapevents.Behavior.WHEELZOOM);
         const provider = this.map.getBaseLayer().getProvider();
 
         // Initialize router and geocoder

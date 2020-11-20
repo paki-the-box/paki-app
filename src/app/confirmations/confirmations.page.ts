@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {SendRequestService} from "../send-request.service";
-import {Box, Contact, SendRequest} from "../backend";
-import {ContactService} from "../contact.service";
+import {SendRequestService} from '../send-request.service';
+import {Box, Contact, SendRequest} from '../backend';
+import {ContactService} from '../contact.service';
 import { BoxService } from '../box.service';
 
 class NamedSendRequest implements SendRequest {
