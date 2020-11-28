@@ -7,7 +7,7 @@ export const authCodeFlowConfig: AuthConfig = {
   issuer: 'https://idsvr4.azurewebsites.net',
 
   // URL of the SPA to redirect the user to after login
-  redirectUri: window.location.origin + '/index.html',
+  redirectUri: window.location.origin + '/login',
 
   // The SPA's id. The SPA is registerd with this id at the auth-server
   // clientId: 'server.code',
