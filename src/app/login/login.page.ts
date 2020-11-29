@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AuthService } from '../auth.service';
+import {authCodeFlowConfig, AuthService} from '../auth.service';
+import {OAuthService} from "angular-oauth2-oidc";
 
 @Component({
   selector: 'app-login',
@@ -11,30 +12,26 @@ export class LoginPage implements OnInit {
   public token?: string;
   public isLogin: boolean = false;
 
-  constructor(private activatedRoute: ActivatedRoute, private authService: AuthService) { }
+  constructor(private activatedRoute: ActivatedRoute, private authService: AuthService, private oauthService: OAuthService) { }
 
   ngOnInit() {
-    this.activatedRoute.fragment.subscribe((data) => {
-      const fragments = data.split('&');
-      console.log(fragments);
-      for (const fragment of fragments) {
-        console.log(fragment);
-        const strings = fragment.split('=');
-        console.log(strings);
-        if (strings[0] === 'access_token') {
-          console.log('Access Token is set...');
-          const accesstoken = strings[1];
-          this.token = accesstoken;
-          this.authService.setToken(accesstoken);
-          this.isLogin = true;
-          return;
+    this.oauthService.configure(authCodeFlowConfig);
+    this.oauthService.loadDiscoveryDocumentAndTryLogin().then(
+        _ => {
+          if (this.authService.isLoggedIn()) {
+            this.token = "Logged In!"
+          } else {
+            this.token = "Not Logged In!"
+          }
         }
-      }
-    });
+    )
   }
 
   login() {
     this.authService.login();
   }
 
+  logout() {
+    this.authService.logout()
+  }
 }

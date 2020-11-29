@@ -27,6 +27,8 @@ export const authCodeFlowConfig: AuthConfig = {
   // The api scope is a usecase specific one
   scope: 'openid profile email offline_access api',
 
+  oidc: true,
+
   showDebugInformation: true,
 };
 
@@ -38,11 +40,7 @@ export class AuthService {
   constructor(private oauthService: OAuthService) { }
 
   isLoggedIn(): boolean {
-    return localStorage.getItem('token')?.length > 0;
-  }
-
-  setToken(token: string) {
-    localStorage.setItem('token', token);
+    return this.oauthService.hasValidIdToken();
   }
 
   login() {
@@ -52,5 +50,9 @@ export class AuthService {
     this.oauthService.loadDiscoveryDocumentAndTryLogin().then(() => {
       this.oauthService.initImplicitFlow();
     });
+  }
+
+  logout() {
+    this.oauthService.logOut();
   }
 }
