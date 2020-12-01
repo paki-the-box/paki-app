@@ -77,10 +77,13 @@ export class AuthService {
       oidc: true,
 
       showDebugInformation: true,
+
+      openUri: uri => window.open(uri)
     }
   }
 
   private getRedirectUri(): string {
+    console.log("Get RedirectURI. Is Hybrid: " + this.platform.is('hybrid'))
     if (this.platform.is('hybrid')) {
       // Universal Link
       return 'paki.pragmaticminds.de'
@@ -98,7 +101,12 @@ export class AuthService {
     this.oauthService.configure(this.getConfig());
     console.log('Try Login');
     this.oauthService.loadDiscoveryDocumentAndTryLogin().then(() => {
-      this.oauthService.initImplicitFlow();
+      console.log("Plattform is Hybrid?: " + this.platform.is('hybrid'))
+      if (this.platform.is('hybrid')) {
+        this.oauthService.initImplicitFlow()
+      } else {
+        this.oauthService.initImplicitFlow()
+      }
     });
   }
 
