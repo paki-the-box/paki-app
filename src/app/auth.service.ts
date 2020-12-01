@@ -4,14 +4,18 @@ import {AuthConfig, OAuthService} from 'angular-oauth2-oidc';
 
 export const authCodeFlowConfig: AuthConfig = {
   // Url of the Identity Provider
-  issuer: 'https://idsvr4.azurewebsites.net',
+  issuer: 'http://auth.demo.pragmaticindustries.de/auth/realms/packi',
+
+  requireHttps: false,
+
+  // loginUrl: 'https://auth.demo.pragmaticindustries.de/auth/realms/packi/protocol/openid-connect/auth',
 
   // URL of the SPA to redirect the user to after login
   redirectUri: window.location.origin + '/login',
 
   // The SPA's id. The SPA is registerd with this id at the auth-server
   // clientId: 'server.code',
-  clientId: 'spa',
+  clientId: 'packi_app',
 
   // Just needed if your auth server demands a secret. In general, this
   // is a sign that the auth server is not configured with SPAs in mind
@@ -25,7 +29,7 @@ export const authCodeFlowConfig: AuthConfig = {
   // The first four are defined by OIDC.
   // Important: Request offline_access to get a refresh token
   // The api scope is a usecase specific one
-  scope: 'openid profile email offline_access api',
+  scope: 'openid email',
 
   oidc: true,
 
