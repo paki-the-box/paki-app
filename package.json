@@ -28,6 +28,7 @@
     "angular2-uuid": "^1.1.1",
     "moment": "^2.29.1",
     "rxjs": "~6.6.3",
+    "simple-plist": "^1.1.1",
     "tslib": "^2.0.0",
     "uuid": "^8.3.1",
     "zone.js": "~0.10.3"
@@ -38,7 +39,7 @@
     "@angular/compiler": "~10.2.1",
     "@angular/compiler-cli": "~10.2.1",
     "@angular/language-service": "~10.2.1",
-    "@gedysintraware/cordova-universal-links-plugin": "git+https://github.com/gedysintraware/cordova-universal-links-plugin.git",
+    "@gedysintraware/cordova-universal-links-plugin": "git+https://github.com/GEDYSIntraWare/cordova-universal-links-plugin.git",
     "@ionic/angular-toolkit": "^2.3.0",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
@@ -77,8 +78,7 @@
       },
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-qrscanner": {},
-      "cordova-universal-links-plugin": {},
-      "cordova-plugin-contacts": {}
+      "cordova-universal-links-plugin": {}
     },
     "platforms": []
   }
