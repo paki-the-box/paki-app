@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import {authCodeFlowConfig, AuthService} from '../auth.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {AuthService} from '../auth.service';
 import {OAuthService} from "angular-oauth2-oidc";
 
 @Component({
@@ -15,7 +15,7 @@ export class LoginPage implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private authService: AuthService, private oauthService: OAuthService) { }
 
   ngOnInit() {
-    this.oauthService.configure(authCodeFlowConfig);
+    this.oauthService.configure(this.authService.getConfig());
     this.oauthService.loadDiscoveryDocumentAndTryLogin().then(
         _ => {
           if (this.authService.isLoggedIn()) {

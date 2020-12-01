@@ -11,6 +11,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <allow-navigation href="http://auth.demo.pragmaticindustries.de/*" />
     <preference name="ScrollEnabled" value="false" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashMaintainAspectRatio" value="true" />
@@ -100,7 +101,7 @@
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <universal-links>
         <host event="ul_authcallback" name="paki.pragmaticminds.de" scheme="https">
-            <path url="/auth-callback" />
+            <path url="/login" />
         </host>
     </universal-links>
 </widget>
